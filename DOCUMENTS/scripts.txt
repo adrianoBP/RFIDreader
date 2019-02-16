@@ -1,0 +1,29 @@
+Il corrente file contiene le informazioni necessarie per l'utilizzo corretto del sistema.
+
+1)GESTIONE DEGLI RFID:
+	La gestione degli RFID viene gestita dallo script "manageRFID.py", una volta eseguito*, lo script rimarrà in ascolto fino alla scansione: 
+	a)se l'RFID scansionato non è presente nel DataBase viene proposta l'aggiunta di esso (y=conferma aggiunta/n=nega aggiunta); in caso di conferma aggiunta si prosegue con l'inserimento facoltativo della descrizione seguito dall'inserimento obbligatorio dello stato dell'RFID (0=non attivo/1=attivo)**.
+	b)se l'RFID scansionato è presente nel DataBase vengono proposte 3 azioni:
+		1)Modifica stato di attivazione, ci permette di modificare lo stato dell'RFID(y=attivo/n=non attivo)
+		2)Modifica descrizione
+		3)Eliminazione RFID
+
+2)INSERIMENTO ACCESSI
+	La scannerizzazione continua degli RFID per la registrazione degli accessi viene gestita dallo script "insertAccesses.py"; qundo eseguito* registra tutti gli accessi effettuati e li inserisce nel DataBase o in un file di log in presenza di errori.
+
+3)VERIFICA DEGLI ACCESSI
+	La verifica degli accessi viene effettuata dallo script "verifyAccesses.py"; una volta eseguito* mostra tutti gli accessi effettuati presenti nel DataBase inserendo "None" come ultimo campo dove l'accesso non sia autorizzato; un accesso viene ritenuto non autorizzato se:
+	-al momento della scansione l'RFID non era attivo
+	-la data della scansione è nel periodo di validità dell'autorizzazione
+	-l'accesso è stato eseguito in un turno valido nell'autorizzazione
+
+4)FUNZIONI	
+	Tutte le funzioni necessarie e comuni a tutti gli script sono situati in "functions.py". Questo NON è un file eseguibile in quanto contiene funzioni che vengono usate da altri script, come la lettura del codice o le connessioni al DataBase.
+
+
+NB: per uscire dagli script premere CTRL+Z
+
+
+
+*Per eseguire gli script digitare: python [nome script]
+**In caso di una selezione non valida, lo stato dell'RFID verrà impostato a FALSE

@@ -1,0 +1,6 @@
+Tutte le scansioni di RFID che siano o meno riconosciute o autorizzate vengono salvate:
+1)tutti gli accessi di RFID che vengono riconosciuti dal sistema vengono salvati nel DataBase, in caso esso non sia disponibile gli accessi vengono salvati nel file "databaseOffline.log"situato nella cartella "LOGS"*.
+2)la scannerizzazione di RFID non riconosciuti viene salvata nel file "notRecognized.log" situato nella cartella "LOGS"*.
+
+
+*I percorsi sono situati in testa ad ogni script nella cartella "SCRIPTS".

@@ -1,0 +1,20 @@
+#Requisiti funzionali.
+
+#Servizi necessari; la mancanza potrebbe risultare in un malfunzionamento o non funzionamento completo.
+sudo service ssh start
+sudo apt-get install python-pip
+sudo pip install pyserial
+
+
+#possibile soluzione a errori nel funzionamento della seriale.
+sudo nano /boot/config.txt + add "enable_uart=1"
+ 
+#configurazione hardware
+GPIO
+PIN 2 -> P3-2 (RDM6300)
+PIN 6 -> P3-3 (RDM6300) -> cathode leds (-)
+PIN 10 -> P1-1 (RDM6300)
+PIN 24 -> anode green led (+)
+PIN 26 -> anode red led (+)
+P2-1 -> cathode antenna
+P2-2 -> anode antenna

@@ -1,0 +1,51 @@
+Il corrente file descrive la struttura del DataBase
+
+Il database è composto da 5 tabelle principali e 3 intermedie.
+
+1)RFIDS
+Tabella che contiene i dati degli RFID
+	-id [primary key, INTEGER]: identificativo dell'RFID, non può essere modificato in quanto gestito interamente dal sistema.
+	-code [TEXT]: codice dell'RFID, di fabbirca.
+	-active [BOOLEAN]: definisce lo stato dell'RFID, a seconda di come sia impostato garantisce o meno l'accesso, modificabile tramite script.
+	-description [TEXT]: descrizione dell'RFID, puramente informativa e modificabile dall'utente tramite script.
+
+2)SHIFTS
+Tabella che coniene i turni.
+	-id [primary key, INTEGER]: identifica il turno: non può essere modificato in quanto gestito interamente dal sistema.
+	-descrition [TEXT]: descrizione del turno.
+	-startTime [TIME]: orario di inizio del turno.
+	-endTime [TIME]: orario di fine del turno.
+
+3)DAYS
+Tabella che contiene i giorni.
+	-id [primary key, INTEGER]: identifica il giorno: non può essere modificato in quanto gestito interamente dal sistema.
+	-description [TEXT]: descrizione del giorno.
+
+4)AUTHORIZATIONS
+Tabella che contiene le autorizzazioni.
+	-id [primary key, INTEGER]: identifica l'autorizzazione: non può essere modificato in quanto gestito interamente dal sistema.
+	-startDateTime [DATETIME]: inizio della validità dell'autorizzazione.
+	-endDateTime [DATETIME]: fine della validità dell'autorizzazione.
+	
+4a)AUTHORIZATIONS_DAYS
+Tabella intermedia che mette in relazione le autorizzazioni e i giorni.
+	-authorizations_id [INTEGER]: id dell'autorizzazione.
+	-days_id [INTEGER]: id del giorno.
+
+4b)AUTHORIZATIONS_SHIFTS
+Tabella intermedia che mette in relazione le autorizzazioni e i turni.
+	-authorizations_id [INTEGER]: id dell'autorizzazione.
+	-shifts_id [INTEGER]: id del turno.
+
+4c)RFIDS_AUTHORIZATIONS
+Tabella intermedia che mette in relazione gli rfid con le autorizzazioni.
+	-rfids_id [INTEGER]: id dell'RFID.
+	-authorizations_id [INTEGER]: id dell'autorizzazione.
+
+5)ACCESSES
+Tabella che contiene tutti gli accessi riconosciuti che siano o meno autorizzati.
+	-id [primary key, INTEGER]: identificativo dell'accesso, non può essere modificato in quanto gestito interamente dal sistema.
+	-logDateTime [DATETIME]: orario di accesso dell'RFID.
+	-rfids_id [INTEGER]: id dell'rfid che ha effettuato l'accesso.
+	-processed [BOOLEAN]
+	-rfidActive [BOOLEAN]: stato dell'RFID al momento dell'accesso

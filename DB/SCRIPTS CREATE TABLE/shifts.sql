@@ -1,0 +1,6 @@
+CREATE TABLE `shifts` (
+	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`description`	TEXT NOT NULL,
+	`startTime`	TIME NOT NULL,
+	`endTime`	TIME NOT NULL
+);
